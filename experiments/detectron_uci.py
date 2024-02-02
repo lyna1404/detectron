@@ -20,10 +20,10 @@ DEFAULT_PARAMS = {
     'colsample_bytree': 0.8,
     'min_child_weight': 1,
     'nthread': 4,
-    'tree_method': 'gpu_hist'
+    'tree_method': 'hist'
 }
 
-BASE_MODEL = xgb_trained_on_uci_heart(seed=0)
+BASE_MODEL, data = torch.hub.load('rgklab/pretrained_models', 'uci_heart')
 
 
 def detectron_tst(train: tuple[np.ndarray, np.ndarray], val: tuple[np.ndarray, np.ndarray],
